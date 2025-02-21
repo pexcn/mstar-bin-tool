@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
 '''
 This tool is used to sign (aka generate "secureinfo") and encrypt partition
 

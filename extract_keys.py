@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
 '''
 	Tool to extract security keys from the MBOOT
 
