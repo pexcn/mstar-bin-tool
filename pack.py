@@ -369,17 +369,17 @@ if (XGIMI_CRC):
 		# If PB803 CRC type selected then adding BIN_CRC to the merged file	
 		if (PB803_CRC):
 			print ('[i]      Bin CRC   : 0x{:02X}'.format(binCRC))
-			part.write(struct.pack('L', binCRC))
+			part.write(struct.pack('I', binCRC))
 		print ('[i]      Magic     : {}'.format(MAGIC_FOOTER))
 		part.write(MAGIC_FOOTER.encode())
 		print ('[i]      Header CRC: 0x{:02X}'.format(headerCRC))
-		part.write(struct.pack('L', headerCRC))
+		part.write(struct.pack('I', headerCRC))
 	
 	# Step #2 Calculate CRC2
 	mergedCRC = utils.crc32(mergedPart)
 	with open(footerPart, 'wb') as footer:
 		print ('[i]      Merged CRC: 0x{:02X}'.format(mergedCRC))
-		footer.write(struct.pack('L', mergedCRC))
+		footer.write(struct.pack('I', mergedCRC))
 		print ('[i]      First 16 bytes of header: {}'.format(header16bytes))
 		footer.write(header16bytes)
 
@@ -395,9 +395,9 @@ else:
 		print ('[i]      Magic: {}'.format(MAGIC_FOOTER))
 		footer.write(MAGIC_FOOTER.encode())
 		print ('[i]      Header CRC: 0x{:02X}'.format(headerCRC))
-		footer.write(struct.pack('L', headerCRC)) # struct.pack('L', data) <- returns byte swapped data
+		footer.write(struct.pack('I', headerCRC)) # struct.pack('I', data) <- returns byte swapped data
 		print ('[i]      Bin CRC: 0x{:02X}'.format(binCRC))
-		footer.write(struct.pack('L', binCRC))
+		footer.write(struct.pack('I', binCRC))
 		print ('[i]      First 16 bytes of header: {}'.format(header16bytes))
 		footer.write(header16bytes)
 
